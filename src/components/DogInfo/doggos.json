@@ -1,0 +1,35 @@
+[
+    {
+        "id": 1, 
+        "name": "Bear and Momo",
+        "imageURL": "./images/lokistagram-bear-momo.png",
+        "insta": [
+            {
+                "handle": "Lokistagram",
+                "link": "https://www.instagram.com/lokistagram/"
+            }
+        ]
+    }, 
+    {
+        "id": 2, 
+        "name": "BB and Phoebe",
+        "imageURL": "./images/bordernerd-bb-phoebe.png",
+        "insta": [
+            {
+                "handle": "Bordernerd",
+                "link": "https://www.instagram.com/bordernerd/"
+            }
+        ]
+    },
+    {
+        "id": 3, 
+        "name": "Blue",
+        "imageURL": "./images/pspca-blue.png",
+        "insta": [
+            {
+                "handle": "PSPCA",
+                "link": "https://www.instagram.com/p/B43Ru57JqOx/"
+            }
+        ]
+    }
+]
