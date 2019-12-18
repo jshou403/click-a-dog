@@ -1,5 +1,9 @@
 .doggo-card-text {
     color: royalblue;
-    background-color:lemonchiffon !important;
+    /* background-color:lemonchiffon !important; */
+    padding: 0px !important;
 }
 
+.doggo-card-body {
+    padding: 0px;
+}

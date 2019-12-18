@@ -3,32 +3,44 @@ import React from 'react';
 import './App.css';
 
 // importing Components for use on main page
-import doggos from "./components/DogInfo/doggos.json"; 
+import doggos from "./doggos.json";
 import Wrapper from "./components/Wrapper"
 import Header from "./components/Header";
 import Instructions from "./components/Instructions";
 import Score from "./components/Score";
 import DogCard from "./components/DogCard";
 
+class App extends React.Component {
 
-function App() {
-  return (
-    <Wrapper>
+  state = {
+    doggosState: doggos,
+    score: 0,
+    highScore: 0,
+    clickedDogs: []
+  }
 
-      <Header />
+  render() {
+    console.log(doggos);
+    return (
+      <Wrapper>
 
-      <Instructions />
+        <Header />
 
-      <Score />
-      <Score />
+          <div className="row">
+            <Instructions />
+            <Score />
+          </div>
 
-      <DogCard image={doggos[0].imageUrl} id={doggos[0].id} name={doggos[0].name} insta={doggos[0].insta.handle} />
-      <DogCard image={doggos[1].imageUrl} id={doggos[1].id} name={doggos[1].name} insta={doggos[1].insta.handle} />
-      <DogCard image={doggos[2].imageUrl} id={doggos[2].id} name={doggos[2].name} insta={doggos[2].insta.handle} />
-      <DogCard  />
-      <DogCard  />
+          <div className="container">
+            <div className="row">
+              {this.state.doggosState.map(doggo => (
+                <DogCard image={doggo.imageUrl} id={doggo.id} key={doggo.id} name={doggo.name} insta={doggo.insta.handle} />
 
-      {/* <header className="App-header">
+              ))}
+            </div>
+          </div>
+
+        {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
@@ -42,8 +54,9 @@ function App() {
           Learn React
         </a>
       </header> */}
-    </Wrapper>
-  );
+      </Wrapper>
+    );
+  }
 }
 
 export default App;
