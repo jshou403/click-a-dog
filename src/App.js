@@ -19,6 +19,14 @@ class App extends React.Component {
     clickedDogs: []
   }
 
+  whenPet = id => {
+    console.log(id);
+    // check if id is inside of clickedDogs array
+    // if it's not, add it to the clickedDogs array and increase the score using setState
+      // check if score > highscore, if so, set highScore to currentScore using setState
+    // if it is, reset the score to 0 using setState
+}
+
   render() {
     console.log(doggos);
     return (
@@ -34,7 +42,7 @@ class App extends React.Component {
           <div className="container">
             <div className="row">
               {this.state.doggosState.map(doggo => (
-                <DogCard image={doggo.imageUrl} id={doggo.id} key={doggo.id} name={doggo.name} insta={doggo.insta.handle} />
+                <DogCard onClick={this.whenPet} image={doggo.imageUrl} id={doggo.id} key={doggo.id} name={doggo.name} insta={doggo.insta.handle} />
 
               ))}
             </div>
