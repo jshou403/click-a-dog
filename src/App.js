@@ -14,39 +14,69 @@ class App extends React.Component {
 
   state = {
     doggosState: doggos,
+    // counter: 0,
     score: 0,
     highScore: 0,
     clickedDogs: []
-  }
+  } 
 
   whenPet = id => {
-    console.log(id);
+
+    // ?????!!!!!
+    const { score } = this.state;
+    // const { counter } = this.state;
+
+    console.log(`\n--- ID Clicked: ${id} ---`);
+
     // check if id is inside of clickedDogs array
-    // if it's not, add it to the clickedDogs array and increase the score using setState
-      // check if score > highscore, if so, set highScore to currentScore using setState
-    // if it is, reset the score to 0 using setState
-}
+    if (this.state.clickedDogs.includes(id)) {
+      // if ID is in array... 
+      console.log(`GAME OVER\nALREADY in array: ${this.state.clickedDogs}`);
+
+      // 1 - reset current state of _____ to 0
+
+      // 2 - run shuffle function
+
+    } else {
+      // if ID is not in array... 
+
+      // 1 - add it to the clickedDogs array 
+      this.state.clickedDogs.push(id);
+      console.log(`ADDED to array: ${this.state.clickedDogs}`);
+
+      // 2 - and increase the score using setState
+      // let scoreTracker use the value of const score to add to score
+      let scoreTracker = score + 1;
+      // set the value of the score property to the value of the scoreTracker
+      this.setState({ score: scoreTracker });
+
+      console.log(`\nscoreTracker: ${scoreTracker}`);
+      // console.log(`score: ${score}`);
+      // console.log(`this.state.score: ${this.state.score}`);
+    }
+
+  }
 
   render() {
-    console.log(doggos);
+    // console.log(doggos);
     return (
       <Wrapper>
 
         <Header />
 
+        <div className="row">
+          <Instructions />
+          <Score highScore={this.state.highScore} score={this.state.score} />
+        </div>
+
+        <div className="container">
           <div className="row">
-            <Instructions />
-            <Score />
-          </div>
+            {this.state.doggosState.map(doggo => (
+              <DogCard onClick={() => this.whenPet(doggo.id)} image={doggo.imageUrl} id={doggo.id} key={doggo.id} name={doggo.name} insta={doggo.insta.handle} />
 
-          <div className="container">
-            <div className="row">
-              {this.state.doggosState.map(doggo => (
-                <DogCard onClick={this.whenPet} image={doggo.imageUrl} id={doggo.id} key={doggo.id} name={doggo.name} insta={doggo.insta.handle} />
-
-              ))}
-            </div>
+            ))}
           </div>
+        </div>
 
         {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />

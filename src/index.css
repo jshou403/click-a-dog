@@ -4,7 +4,8 @@ body {
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif; */
     font-family: 'Crimson Text', serif;
-    width: 50%;
+    /* min-width: 800px; */
+    max-width: 800px;
     margin: 0 auto;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
