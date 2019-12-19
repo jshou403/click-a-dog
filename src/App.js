@@ -20,10 +20,17 @@ class App extends React.Component {
     clickedDogs: []
   } 
 
+  shuffleCards = () => {
+    this.setState({ doggosState: this.state.doggosState.sort(() => Math.random() - 0.5) })
+  };
+
   whenPet = id => {
+    
+    this.shuffleCards();
 
     // ?????!!!!!
     const { score } = this.state;
+    const { highScore } = this.state;
     // const { counter } = this.state;
 
     console.log(`\n--- ID Clicked: ${id} ---`);
@@ -34,9 +41,9 @@ class App extends React.Component {
       console.log(`GAME OVER\nALREADY in array: ${this.state.clickedDogs}`);
 
       // 1 - reset current state of _____ to 0
-      
+      this.setState({ score: 0 })
+      this.setState({ clickedDogs: [] })
 
-      // 2 - run shuffle function
 
     } else {
       // if ID is not in array... 
@@ -54,8 +61,6 @@ class App extends React.Component {
       console.log(`\nscoreTracker: ${scoreTracker}`);
       // console.log(`score: ${score}`);
       // console.log(`this.state.score: ${this.state.score}`);
-
-      const { highScore } = this.state;
       
       // let highScoreTracker use the value of the const highScore to add to highScore
       var highScoreTracker = highScore
@@ -68,12 +73,8 @@ class App extends React.Component {
         // set the value of the highScore property to the value of the highScoreTracker
         this.setState({ highScore: scoreTracker });
         console.log(`highScore = ${highScore}`);
-      } else {
-        
-      }
-
+      } 
     }
-
   }
 
   render() {
