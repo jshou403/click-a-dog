@@ -34,6 +34,7 @@ class App extends React.Component {
       console.log(`GAME OVER\nALREADY in array: ${this.state.clickedDogs}`);
 
       // 1 - reset current state of _____ to 0
+      
 
       // 2 - run shuffle function
 
@@ -53,6 +54,24 @@ class App extends React.Component {
       console.log(`\nscoreTracker: ${scoreTracker}`);
       // console.log(`score: ${score}`);
       // console.log(`this.state.score: ${this.state.score}`);
+
+      const { highScore } = this.state;
+      
+      // let highScoreTracker use the value of the const highScore to add to highScore
+      var highScoreTracker = highScore
+      console.log(`highScoreTracker = ${highScoreTracker}`);
+
+      // 2A - check if the scoreTracker > highScore
+      // if scoreTracker is greater than highScoreTracker
+      if (scoreTracker > highScoreTracker) {
+        console.log(`Checking against high score!`);
+        // set the value of the highScore property to the value of the highScoreTracker
+        this.setState({ highScore: scoreTracker });
+        console.log(`highScore = ${highScore}`);
+      } else {
+        
+      }
+
     }
 
   }
