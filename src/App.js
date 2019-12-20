@@ -1,6 +1,4 @@
 import React from 'react';
-// import logo from './logo.svg';
-import './App.css';
 
 // importing Components for use on main page
 import doggos from "./doggos.json";
@@ -14,66 +12,86 @@ class App extends React.Component {
 
   state = {
     doggosState: doggos,
-    // counter: 0,
     score: 0,
     highScore: 0,
     clickedDogs: []
-  } 
+  }
 
   shuffleCards = () => {
     this.setState({ doggosState: this.state.doggosState.sort(() => Math.random() - 0.5) })
-  };
+  }
 
-  whenPet = id => {
-    
+  resetGameStats = () => {
+    this.setState({ score: 0 })
+    this.setState({ clickedDogs: [] })
+  }
+
+  // whenClicked is run when a doggoCard has been clicked.
+  whenClicked = id => {
+    // console.log(`\n ID Clicked: ${id} \n`);
+
+    // 1 - Shuffle the cards.
     this.shuffleCards();
 
-    // ?????!!!!!
+    // 2 - Declare the states that we will update.
     const { score } = this.state;
     const { highScore } = this.state;
-    // const { counter } = this.state;
 
-    console.log(`\n--- ID Clicked: ${id} ---`);
-
-    // check if id is inside of clickedDogs array
+    // 3 - Check if the id passed in from the doggoCard is already in the clickedDogs array.
     if (this.state.clickedDogs.includes(id)) {
-      // if ID is in array... 
-      console.log(`GAME OVER\nALREADY in array: ${this.state.clickedDogs}`);
+      // 3A // If id IS IN array... 
+      // 3A - Display loss alert.
+      // 3A - Reset score and array.
 
-      // 1 - reset current state of _____ to 0
-      this.setState({ score: 0 })
-      this.setState({ clickedDogs: [] })
+      alert("You pet this dog already! You lose this round but please try again!");
+      // console.log(`GAME OVER\nALREADY in array: ${this.state.clickedDogs}`);
 
+      this.resetGameStats();
+      // this.setState({ score: 0 })
+      // this.setState({ clickedDogs: [] })
 
     } else {
-      // if ID is not in array... 
+      // 3B // If id is NOT in array... 
+      // 3B - Add it to the clickedDogs array.
+      // 3B - Increase the score by one. 
+      // 3B - Check for high score. 
 
-      // 1 - add it to the clickedDogs array 
       this.state.clickedDogs.push(id);
-      console.log(`ADDED to array: ${this.state.clickedDogs}`);
+      // console.log(`Added to array: ${this.state.clickedDogs}`);
 
-      // 2 - and increase the score using setState
       // let scoreTracker use the value of const score to add to score
-      let scoreTracker = score + 1;
       // set the value of the score property to the value of the scoreTracker
+      let scoreTracker = score + 1;
       this.setState({ score: scoreTracker });
+      // console.log(`\nscoreTracker: ${scoreTracker}`);
 
-      console.log(`\nscoreTracker: ${scoreTracker}`);
-      // console.log(`score: ${score}`);
-      // console.log(`this.state.score: ${this.state.score}`);
-      
-      // let highScoreTracker use the value of the const highScore to add to highScore
+      // 3B - Check for high score.
+      // let highScoreTracker use the value of the const highScore
       var highScoreTracker = highScore
-      console.log(`highScoreTracker = ${highScoreTracker}`);
+      // console.log(`highScoreTracker = ${highScoreTracker}`);
 
-      // 2A - check if the scoreTracker > highScore
-      // if scoreTracker is greater than highScoreTracker
       if (scoreTracker > highScoreTracker) {
-        console.log(`Checking against high score!`);
-        // set the value of the highScore property to the value of the highScoreTracker
+        // 3B 1 // If the current score > current high score... 
+        // 3B 1 - Update the highScore to scoreTracker (current score).
+        // 3B 1 - Check if current score = 12... 
+        //// Display win alert.
+        //// Reset score and array.
+
         this.setState({ highScore: scoreTracker });
-        console.log(`highScore = ${highScore}`);
-      } 
+        // console.log(`highScore = ${highScore}`);
+
+        if (scoreTracker === 12) {
+          alert("You pet all the doggos and all the doggos are grateful for your pets! Want to give more pets?")
+          this.resetGameStats();
+        }
+
+      } else if (scoreTracker === 12) {
+        // 3B 2 // If current score = 12... 
+        // 3B 2 - Alert win.
+        // 3B 2 - Reset game stats.
+        alert("Yay! You pet all the doggos and all the doggos are grateful for your pets! Want to give more pets?")
+        this.resetGameStats();
+      }
     }
   }
 
@@ -92,26 +110,11 @@ class App extends React.Component {
         <div className="container">
           <div className="row">
             {this.state.doggosState.map(doggo => (
-              <DogCard onClick={() => this.whenPet(doggo.id)} image={doggo.imageUrl} id={doggo.id} key={doggo.id} name={doggo.name} insta={doggo.insta.handle} />
+              <DogCard onClick={() => this.whenClicked(doggo.id)} image={doggo.imageUrl} id={doggo.id} key={doggo.id} name={doggo.name} insta={doggo.insta.handle} />
 
             ))}
           </div>
         </div>
-
-        {/* <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header> */}
       </Wrapper>
     );
   }
