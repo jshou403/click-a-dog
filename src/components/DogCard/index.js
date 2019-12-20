@@ -7,12 +7,11 @@ import "./style.css";
 
 function DogCard(dog) {
     return (
-        <div className="card col-3 border-0 rounded-0 pt-2 doggo-card"
+        <div className="card col-3 border-0 rounded-0 p-0 doggo-card"
             onClick={() => dog.onClick(dog.id)}>
             <img src={dog.image} className="card-img-top" id={dog.id} alt={dog.name} />
             <div className="card-body doggo-card-body">
                 <h6 className="card-text doggo-card-text">{dog.name} ({dog.insta})</h6>
-                <p>{dog.insta}</p>
             </div>
         </div>
     )
