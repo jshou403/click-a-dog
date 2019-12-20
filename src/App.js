@@ -81,7 +81,7 @@ class App extends React.Component {
         // console.log(`highScore = ${highScore}`);
 
         if (scoreTracker === 12) {
-          alert("You pet all the doggos and all the doggos are grateful for your pets! Want to give more pets?")
+          alert("Yay! All the doggos are grateful for your pets! Want to give more pets?")
           this.resetGameStats();
         }
 
@@ -107,14 +107,19 @@ class App extends React.Component {
           <Score highScore={this.state.highScore} score={this.state.score} />
         </div>
 
-        <div className="container">
+        <Wrapper>
           <div className="row">
             {this.state.doggosState.map(doggo => (
-              <DogCard onClick={() => this.whenClicked(doggo.id)} image={doggo.imageUrl} id={doggo.id} key={doggo.id} name={doggo.name} insta={doggo.insta.handle} />
-
+              <DogCard 
+              onClick={() => this.whenClicked(doggo.id)} 
+              image={doggo.imageUrl} 
+              id={doggo.id} key={doggo.id} 
+              name={doggo.name} 
+              insta={doggo.insta.handle} />
             ))}
           </div>
-        </div>
+        </Wrapper>
+        
       </Wrapper>
     );
   }
