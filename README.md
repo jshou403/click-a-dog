@@ -4,6 +4,12 @@
 * [Deployed](http://jshou403.github.io/pet-the-doggos)
 * [Repository](https://github.com/jshou403/pet-the-doggos)
 
+## How The App Works 
+This app is built with React.js and sets    
+
+This React.js app is a basic memory game that shuffles cards after each click. The goal of the game 
+
+
 ## Technologies Used
 * React.js
 * JSX
