@@ -5,14 +5,16 @@
 * [Repository](https://github.com/jshou403/pet-the-doggos)
 
 ## How The App Works 
-This app is built with React.js and sets    
+This single-page game is built with React.js uses Create React App for initial set up. Once the page loads, the user is shown 12 images of dogs. The goal of the game is to click on each of the 12 dogs just once. Once a dog is clicked, all the images shuffle and if the dog has not been clicked yet, the score increases by 1; if the dog has already been clicked the current score resets to 0. 
 
-This React.js app is a basic memory game that shuffles cards after each click. The goal of the game 
-
+![preview](./public/images/game-preview.png)
 
 ## Technologies Used
 * React.js
 * JSX
+* Javascript 
+* Bootstrap
+* CSS3
 
 ## Developer
 Jacalyn Shou 
